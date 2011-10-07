@@ -366,7 +366,10 @@ class AssetHelper extends Helper {
 
     $paths = array($this->__getPath($type));
 		$paths = array_merge($paths, $this->options['searchPaths']);
-		
+      
+    if(!empty($this->theme)) {
+        $paths[] = VIEWS .  'themed' . DS . $this->theme . DS . 'webroot' . DS;
+    }
     
     if (!empty($asset['plugin']) > 0) {
       $pluginPaths = App::path('plugins');
